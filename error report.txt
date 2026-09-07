@@ -1,0 +1,719 @@
+(fast-zero-py3.13) paulogoes@acerA315-53:~/Projetos/fast_zero$ task test
+All checks passed!
+================================================================ test session starts ================================================================
+platform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /home/paulogoes/Projetos/fast_zero/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /home/paulogoes/Projetos/fast_zero
+configfile: pyproject.toml
+plugins: cov-7.1.0, anyio-4.14.2
+collected 13 items                                                                                                                                  
+
+tests/test_app.py::test_read_rood_deve_retornar_OK_e_ola_mundo ERROR                                                                          [  7%]
+tests/test_app.py::test_read_html_deve_retornar_OK_e_html ERROR                                                                               [ 15%]
+tests/test_app.py::test_create_user ERROR                                                                                                     [ 23%]
+tests/test_app.py::test_read_users ERROR                                                                                                      [ 30%]
+tests/test_app.py::test_update_users ERROR                                                                                                    [ 38%]
+tests/test_app.py::test_delete_user ERROR                                                                                                     [ 46%]
+tests/test_app.py::test_404_update_users[0] ERROR                                                                                             [ 53%]
+tests/test_app.py::test_404_update_users[-1] ERROR                                                                                            [ 61%]
+tests/test_app.py::test_404_update_users[2] ERROR                                                                                             [ 69%]
+tests/test_app.py::test_404_delete_users[0] ERROR                                                                                             [ 76%]
+tests/test_app.py::test_404_delete_users[-1] ERROR                                                                                            [ 84%]
+tests/test_app.py::test_404_delete_users[2] ERROR                                                                                             [ 92%]
+tests/test_db.py::test_create_user PASSED                                                                                                     [100%]/usr/lib/python3.13/collections/__init__.py:452: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7f076fc573d0>
+  result = tuple_new(cls, iterable)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+
+====================================================================== ERRORS =======================================================================
+___________________________________________ ERROR at setup of test_read_rood_deve_retornar_OK_e_ola_mundo ___________________________________________
+
+session = <sqlalchemy.orm.session.Session object at 0x7f0770644980>
+
+    @pytest.fixture
+    def client(session):
+        def get_session_override():
+            return session
+    
+>       with TestClient(app) as client:
+             ^^^^^^^^^^^^^^^
+
+tests/conftest.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv/lib/python3.13/site-packages/starlette/testclient.py:698: in __enter__
+    portal.call(self.wait_startup)
+.venv/lib/python3.13/site-packages/anyio/from_thread.py:338: in call
+    return cast(T_Retval, self.start_task_soon(func, *args).result())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/concurrent/futures/_base.py:449: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/concurrent/futures/_base.py:401: in __get_result
+    raise self._exception
+.venv/lib/python3.13/site-packages/anyio/from_thread.py:263: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/starlette/testclient.py:727: in wait_startup
+    message = await receive()
+              ^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/starlette/testclient.py:724: in receive
+    self.task.result()
+/usr/lib/python3.13/concurrent/futures/_base.py:449: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/concurrent/futures/_base.py:401: in __get_result
+    raise self._exception
+.venv/lib/python3.13/site-packages/anyio/from_thread.py:263: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/starlette/testclient.py:714: in lifespan
+    await self.app(scope, self.stream_receive.receive, self.stream_send.send)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <starlette.testclient._WrapASGI2 object at 0x7f0770644c20>, scope = {'type': 'lifespan', 'state': {}}
+receive = <bound method StapledObjectStream.receive of StapledObjectStream(send_stream=MemoryObjectSendStream(_state=_MemoryObje...d_channels=0, open_receive_channels=0, waiting_receivers=OrderedDict(), waiting_senders=OrderedDict()), _closed=True))>
+send = <bound method StapledObjectStream.send of StapledObjectStream(send_stream=MemoryObjectSendStream(_state=_MemoryObjectS...d_channels=0, open_receive_channels=0, waiting_receivers=OrderedDict(), waiting_senders=OrderedDict()), _closed=True))>
+
+    async def __call__(self, scope: Scope, receive: Receive, send: Send) -> None:
+>       instance = self.app(scope)
+                   ^^^^^^^^^^^^^^^
+E       TypeError: 'module' object is not callable
+
+.venv/lib/python3.13/site-packages/starlette/testclient.py:78: TypeError
+_____________________________________________ ERROR at setup of test_read_html_deve_retornar_OK_e_html ______________________________________________
+
+session = <sqlalchemy.orm.session.Session object at 0x7f07706a2350>
+
+    @pytest.fixture
+    def client(session):
+        def get_session_override():
+            return session
+    
+>       with TestClient(app) as client:
+             ^^^^^^^^^^^^^^^
+
+tests/conftest.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv/lib/python3.13/site-packages/starlette/testclient.py:698: in __enter__
+    portal.call(self.wait_startup)
+.venv/lib/python3.13/site-packages/anyio/from_thread.py:338: in call
+    return cast(T_Retval, self.start_task_soon(func, *args).result())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/concurrent/futures/_base.py:456: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/concurrent/futures/_base.py:401: in __get_result
+    raise self._exception
+.venv/lib/python3.13/site-packages/anyio/from_thread.py:263: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/starlette/testclient.py:727: in wait_startup
+    message = await receive()
+              ^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/starlette/testclient.py:724: in receive
+    self.task.result()
+/usr/lib/python3.13/concurrent/futures/_base.py:449: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/concurrent/futures/_base.py:401: in __get_result
+    raise self._exception
+.venv/lib/python3.13/site-packages/anyio/from_thread.py:263: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/starlette/testclient.py:714: in lifespan
+    await self.app(scope, self.stream_receive.receive, self.stream_send.send)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <starlette.testclient._WrapASGI2 object at 0x7f07706a25d0>, scope = {'type': 'lifespan', 'state': {}}
+receive = <bound method StapledObjectStream.receive of StapledObjectStream(send_stream=MemoryObjectSendStream(_state=_MemoryObje...d_channels=0, open_receive_channels=0, waiting_receivers=OrderedDict(), waiting_senders=OrderedDict()), _closed=True))>
+send = <bound method StapledObjectStream.send of StapledObjectStream(send_stream=MemoryObjectSendStream(_state=_MemoryObjectS...d_channels=0, open_receive_channels=0, waiting_receivers=OrderedDict(), waiting_senders=OrderedDict()), _closed=True))>
+
+    async def __call__(self, scope: Scope, receive: Receive, send: Send) -> None:
+>       instance = self.app(scope)
+                   ^^^^^^^^^^^^^^^
+E       TypeError: 'module' object is not callable
+
+.venv/lib/python3.13/site-packages/starlette/testclient.py:78: TypeError
+________________________________________________________ ERROR at setup of test_create_user _________________________________________________________
+
+session = <sqlalchemy.orm.session.Session object at 0x7f077061ac10>
+
+    @pytest.fixture
+    def client(session):
+        def get_session_override():
+            return session
+    
+>       with TestClient(app) as client:
+             ^^^^^^^^^^^^^^^
+
+tests/conftest.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv/lib/python3.13/site-packages/starlette/testclient.py:698: in __enter__
+    portal.call(self.wait_startup)
+.venv/lib/python3.13/site-packages/anyio/from_thread.py:338: in call
+    return cast(T_Retval, self.start_task_soon(func, *args).result())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/concurrent/futures/_base.py:449: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/concurrent/futures/_base.py:401: in __get_result
+    raise self._exception
+.venv/lib/python3.13/site-packages/anyio/from_thread.py:263: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/starlette/testclient.py:727: in wait_startup
+    message = await receive()
+              ^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/starlette/testclient.py:724: in receive
+    self.task.result()
+/usr/lib/python3.13/concurrent/futures/_base.py:449: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/concurrent/futures/_base.py:401: in __get_result
+    raise self._exception
+.venv/lib/python3.13/site-packages/anyio/from_thread.py:263: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/starlette/testclient.py:714: in lifespan
+    await self.app(scope, self.stream_receive.receive, self.stream_send.send)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <starlette.testclient._WrapASGI2 object at 0x7f077061bd90>, scope = {'type': 'lifespan', 'state': {}}
+receive = <bound method StapledObjectStream.receive of StapledObjectStream(send_stream=MemoryObjectSendStream(_state=_MemoryObje...d_channels=0, open_receive_channels=0, waiting_receivers=OrderedDict(), waiting_senders=OrderedDict()), _closed=True))>
+send = <bound method StapledObjectStream.send of StapledObjectStream(send_stream=MemoryObjectSendStream(_state=_MemoryObjectS...d_channels=0, open_receive_channels=0, waiting_receivers=OrderedDict(), waiting_senders=OrderedDict()), _closed=True))>
+
+    async def __call__(self, scope: Scope, receive: Receive, send: Send) -> None:
+>       instance = self.app(scope)
+                   ^^^^^^^^^^^^^^^
+E       TypeError: 'module' object is not callable
+
+.venv/lib/python3.13/site-packages/starlette/testclient.py:78: TypeError
+_________________________________________________________ ERROR at setup of test_read_users _________________________________________________________
+
+session = <sqlalchemy.orm.session.Session object at 0x7f076fcf83e0>
+
+    @pytest.fixture
+    def client(session):
+        def get_session_override():
+            return session
+    
+>       with TestClient(app) as client:
+             ^^^^^^^^^^^^^^^
+
+tests/conftest.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv/lib/python3.13/site-packages/starlette/testclient.py:698: in __enter__
+    portal.call(self.wait_startup)
+.venv/lib/python3.13/site-packages/anyio/from_thread.py:338: in call
+    return cast(T_Retval, self.start_task_soon(func, *args).result())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/concurrent/futures/_base.py:449: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/concurrent/futures/_base.py:401: in __get_result
+    raise self._exception
+.venv/lib/python3.13/site-packages/anyio/from_thread.py:263: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/starlette/testclient.py:727: in wait_startup
+    message = await receive()
+              ^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/starlette/testclient.py:724: in receive
+    self.task.result()
+/usr/lib/python3.13/concurrent/futures/_base.py:449: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/concurrent/futures/_base.py:401: in __get_result
+    raise self._exception
+.venv/lib/python3.13/site-packages/anyio/from_thread.py:263: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/starlette/testclient.py:714: in lifespan
+    await self.app(scope, self.stream_receive.receive, self.stream_send.send)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <starlette.testclient._WrapASGI2 object at 0x7f076fcf8180>, scope = {'type': 'lifespan', 'state': {}}
+receive = <bound method StapledObjectStream.receive of StapledObjectStream(send_stream=MemoryObjectSendStream(_state=_MemoryObje...d_channels=0, open_receive_channels=0, waiting_receivers=OrderedDict(), waiting_senders=OrderedDict()), _closed=True))>
+send = <bound method StapledObjectStream.send of StapledObjectStream(send_stream=MemoryObjectSendStream(_state=_MemoryObjectS...d_channels=0, open_receive_channels=0, waiting_receivers=OrderedDict(), waiting_senders=OrderedDict()), _closed=True))>
+
+    async def __call__(self, scope: Scope, receive: Receive, send: Send) -> None:
+>       instance = self.app(scope)
+                   ^^^^^^^^^^^^^^^
+E       TypeError: 'module' object is not callable
+
+.venv/lib/python3.13/site-packages/starlette/testclient.py:78: TypeError
+________________________________________________________ ERROR at setup of test_update_users ________________________________________________________
+
+session = <sqlalchemy.orm.session.Session object at 0x7f076fcfa2c0>
+
+    @pytest.fixture
+    def client(session):
+        def get_session_override():
+            return session
+    
+>       with TestClient(app) as client:
+             ^^^^^^^^^^^^^^^
+
+tests/conftest.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv/lib/python3.13/site-packages/starlette/testclient.py:698: in __enter__
+    portal.call(self.wait_startup)
+.venv/lib/python3.13/site-packages/anyio/from_thread.py:338: in call
+    return cast(T_Retval, self.start_task_soon(func, *args).result())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/concurrent/futures/_base.py:449: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/concurrent/futures/_base.py:401: in __get_result
+    raise self._exception
+.venv/lib/python3.13/site-packages/anyio/from_thread.py:263: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/starlette/testclient.py:727: in wait_startup
+    message = await receive()
+              ^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/starlette/testclient.py:724: in receive
+    self.task.result()
+/usr/lib/python3.13/concurrent/futures/_base.py:449: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/concurrent/futures/_base.py:401: in __get_result
+    raise self._exception
+.venv/lib/python3.13/site-packages/anyio/from_thread.py:263: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/starlette/testclient.py:714: in lifespan
+    await self.app(scope, self.stream_receive.receive, self.stream_send.send)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <starlette.testclient._WrapASGI2 object at 0x7f076fcf9810>, scope = {'type': 'lifespan', 'state': {}}
+receive = <bound method StapledObjectStream.receive of StapledObjectStream(send_stream=MemoryObjectSendStream(_state=_MemoryObje...d_channels=0, open_receive_channels=0, waiting_receivers=OrderedDict(), waiting_senders=OrderedDict()), _closed=True))>
+send = <bound method StapledObjectStream.send of StapledObjectStream(send_stream=MemoryObjectSendStream(_state=_MemoryObjectS...d_channels=0, open_receive_channels=0, waiting_receivers=OrderedDict(), waiting_senders=OrderedDict()), _closed=True))>
+
+    async def __call__(self, scope: Scope, receive: Receive, send: Send) -> None:
+>       instance = self.app(scope)
+                   ^^^^^^^^^^^^^^^
+E       TypeError: 'module' object is not callable
+
+.venv/lib/python3.13/site-packages/starlette/testclient.py:78: TypeError
+________________________________________________________ ERROR at setup of test_delete_user _________________________________________________________
+
+session = <sqlalchemy.orm.session.Session object at 0x7f07706a7ad0>
+
+    @pytest.fixture
+    def client(session):
+        def get_session_override():
+            return session
+    
+>       with TestClient(app) as client:
+             ^^^^^^^^^^^^^^^
+
+tests/conftest.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv/lib/python3.13/site-packages/starlette/testclient.py:698: in __enter__
+    portal.call(self.wait_startup)
+.venv/lib/python3.13/site-packages/anyio/from_thread.py:338: in call
+    return cast(T_Retval, self.start_task_soon(func, *args).result())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/concurrent/futures/_base.py:456: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/concurrent/futures/_base.py:401: in __get_result
+    raise self._exception
+.venv/lib/python3.13/site-packages/anyio/from_thread.py:263: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/starlette/testclient.py:727: in wait_startup
+    message = await receive()
+              ^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/starlette/testclient.py:724: in receive
+    self.task.result()
+/usr/lib/python3.13/concurrent/futures/_base.py:449: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/concurrent/futures/_base.py:401: in __get_result
+    raise self._exception
+.venv/lib/python3.13/site-packages/anyio/from_thread.py:263: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/starlette/testclient.py:714: in lifespan
+    await self.app(scope, self.stream_receive.receive, self.stream_send.send)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <starlette.testclient._WrapASGI2 object at 0x7f076fc48170>, scope = {'type': 'lifespan', 'state': {}}
+receive = <bound method StapledObjectStream.receive of StapledObjectStream(send_stream=MemoryObjectSendStream(_state=_MemoryObje...d_channels=0, open_receive_channels=0, waiting_receivers=OrderedDict(), waiting_senders=OrderedDict()), _closed=True))>
+send = <bound method StapledObjectStream.send of StapledObjectStream(send_stream=MemoryObjectSendStream(_state=_MemoryObjectS...d_channels=0, open_receive_channels=0, waiting_receivers=OrderedDict(), waiting_senders=OrderedDict()), _closed=True))>
+
+    async def __call__(self, scope: Scope, receive: Receive, send: Send) -> None:
+>       instance = self.app(scope)
+                   ^^^^^^^^^^^^^^^
+E       TypeError: 'module' object is not callable
+
+.venv/lib/python3.13/site-packages/starlette/testclient.py:78: TypeError
+____________________________________________________ ERROR at setup of test_404_update_users[0] _____________________________________________________
+
+session = <sqlalchemy.orm.session.Session object at 0x7f077068f790>
+
+    @pytest.fixture
+    def client(session):
+        def get_session_override():
+            return session
+    
+>       with TestClient(app) as client:
+             ^^^^^^^^^^^^^^^
+
+tests/conftest.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv/lib/python3.13/site-packages/starlette/testclient.py:698: in __enter__
+    portal.call(self.wait_startup)
+.venv/lib/python3.13/site-packages/anyio/from_thread.py:338: in call
+    return cast(T_Retval, self.start_task_soon(func, *args).result())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/concurrent/futures/_base.py:449: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/concurrent/futures/_base.py:401: in __get_result
+    raise self._exception
+.venv/lib/python3.13/site-packages/anyio/from_thread.py:263: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/starlette/testclient.py:727: in wait_startup
+    message = await receive()
+              ^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/starlette/testclient.py:724: in receive
+    self.task.result()
+/usr/lib/python3.13/concurrent/futures/_base.py:449: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/concurrent/futures/_base.py:401: in __get_result
+    raise self._exception
+.venv/lib/python3.13/site-packages/anyio/from_thread.py:263: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/starlette/testclient.py:714: in lifespan
+    await self.app(scope, self.stream_receive.receive, self.stream_send.send)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <starlette.testclient._WrapASGI2 object at 0x7f077068ecf0>, scope = {'type': 'lifespan', 'state': {}}
+receive = <bound method StapledObjectStream.receive of StapledObjectStream(send_stream=MemoryObjectSendStream(_state=_MemoryObje...d_channels=0, open_receive_channels=0, waiting_receivers=OrderedDict(), waiting_senders=OrderedDict()), _closed=True))>
+send = <bound method StapledObjectStream.send of StapledObjectStream(send_stream=MemoryObjectSendStream(_state=_MemoryObjectS...d_channels=0, open_receive_channels=0, waiting_receivers=OrderedDict(), waiting_senders=OrderedDict()), _closed=True))>
+
+    async def __call__(self, scope: Scope, receive: Receive, send: Send) -> None:
+>       instance = self.app(scope)
+                   ^^^^^^^^^^^^^^^
+E       TypeError: 'module' object is not callable
+
+.venv/lib/python3.13/site-packages/starlette/testclient.py:78: TypeError
+____________________________________________________ ERROR at setup of test_404_update_users[-1] ____________________________________________________
+
+session = <sqlalchemy.orm.session.Session object at 0x7f076fcccaf0>
+
+    @pytest.fixture
+    def client(session):
+        def get_session_override():
+            return session
+    
+>       with TestClient(app) as client:
+             ^^^^^^^^^^^^^^^
+
+tests/conftest.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv/lib/python3.13/site-packages/starlette/testclient.py:698: in __enter__
+    portal.call(self.wait_startup)
+.venv/lib/python3.13/site-packages/anyio/from_thread.py:338: in call
+    return cast(T_Retval, self.start_task_soon(func, *args).result())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/concurrent/futures/_base.py:456: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/concurrent/futures/_base.py:401: in __get_result
+    raise self._exception
+.venv/lib/python3.13/site-packages/anyio/from_thread.py:263: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/starlette/testclient.py:727: in wait_startup
+    message = await receive()
+              ^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/starlette/testclient.py:724: in receive
+    self.task.result()
+/usr/lib/python3.13/concurrent/futures/_base.py:449: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/concurrent/futures/_base.py:401: in __get_result
+    raise self._exception
+.venv/lib/python3.13/site-packages/anyio/from_thread.py:263: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/starlette/testclient.py:714: in lifespan
+    await self.app(scope, self.stream_receive.receive, self.stream_send.send)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <starlette.testclient._WrapASGI2 object at 0x7f076fcccc00>, scope = {'type': 'lifespan', 'state': {}}
+receive = <bound method StapledObjectStream.receive of StapledObjectStream(send_stream=MemoryObjectSendStream(_state=_MemoryObje...d_channels=0, open_receive_channels=0, waiting_receivers=OrderedDict(), waiting_senders=OrderedDict()), _closed=True))>
+send = <bound method StapledObjectStream.send of StapledObjectStream(send_stream=MemoryObjectSendStream(_state=_MemoryObjectS...d_channels=0, open_receive_channels=0, waiting_receivers=OrderedDict(), waiting_senders=OrderedDict()), _closed=True))>
+
+    async def __call__(self, scope: Scope, receive: Receive, send: Send) -> None:
+>       instance = self.app(scope)
+                   ^^^^^^^^^^^^^^^
+E       TypeError: 'module' object is not callable
+
+.venv/lib/python3.13/site-packages/starlette/testclient.py:78: TypeError
+____________________________________________________ ERROR at setup of test_404_update_users[2] _____________________________________________________
+
+session = <sqlalchemy.orm.session.Session object at 0x7f076fc6d050>
+
+    @pytest.fixture
+    def client(session):
+        def get_session_override():
+            return session
+    
+>       with TestClient(app) as client:
+             ^^^^^^^^^^^^^^^
+
+tests/conftest.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv/lib/python3.13/site-packages/starlette/testclient.py:698: in __enter__
+    portal.call(self.wait_startup)
+.venv/lib/python3.13/site-packages/anyio/from_thread.py:338: in call
+    return cast(T_Retval, self.start_task_soon(func, *args).result())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/concurrent/futures/_base.py:449: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/concurrent/futures/_base.py:401: in __get_result
+    raise self._exception
+.venv/lib/python3.13/site-packages/anyio/from_thread.py:263: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/starlette/testclient.py:727: in wait_startup
+    message = await receive()
+              ^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/starlette/testclient.py:724: in receive
+    self.task.result()
+/usr/lib/python3.13/concurrent/futures/_base.py:449: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/concurrent/futures/_base.py:401: in __get_result
+    raise self._exception
+.venv/lib/python3.13/site-packages/anyio/from_thread.py:263: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/starlette/testclient.py:714: in lifespan
+    await self.app(scope, self.stream_receive.receive, self.stream_send.send)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <starlette.testclient._WrapASGI2 object at 0x7f076fc6ca50>, scope = {'type': 'lifespan', 'state': {}}
+receive = <bound method StapledObjectStream.receive of StapledObjectStream(send_stream=MemoryObjectSendStream(_state=_MemoryObje...d_channels=0, open_receive_channels=0, waiting_receivers=OrderedDict(), waiting_senders=OrderedDict()), _closed=True))>
+send = <bound method StapledObjectStream.send of StapledObjectStream(send_stream=MemoryObjectSendStream(_state=_MemoryObjectS...d_channels=0, open_receive_channels=0, waiting_receivers=OrderedDict(), waiting_senders=OrderedDict()), _closed=True))>
+
+    async def __call__(self, scope: Scope, receive: Receive, send: Send) -> None:
+>       instance = self.app(scope)
+                   ^^^^^^^^^^^^^^^
+E       TypeError: 'module' object is not callable
+
+.venv/lib/python3.13/site-packages/starlette/testclient.py:78: TypeError
+____________________________________________________ ERROR at setup of test_404_delete_users[0] _____________________________________________________
+
+session = <sqlalchemy.orm.session.Session object at 0x7f076fc6ee50>
+
+    @pytest.fixture
+    def client(session):
+        def get_session_override():
+            return session
+    
+>       with TestClient(app) as client:
+             ^^^^^^^^^^^^^^^
+
+tests/conftest.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv/lib/python3.13/site-packages/starlette/testclient.py:698: in __enter__
+    portal.call(self.wait_startup)
+.venv/lib/python3.13/site-packages/anyio/from_thread.py:338: in call
+    return cast(T_Retval, self.start_task_soon(func, *args).result())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/concurrent/futures/_base.py:449: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/concurrent/futures/_base.py:401: in __get_result
+    raise self._exception
+.venv/lib/python3.13/site-packages/anyio/from_thread.py:263: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/starlette/testclient.py:727: in wait_startup
+    message = await receive()
+              ^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/starlette/testclient.py:724: in receive
+    self.task.result()
+/usr/lib/python3.13/concurrent/futures/_base.py:449: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/concurrent/futures/_base.py:401: in __get_result
+    raise self._exception
+.venv/lib/python3.13/site-packages/anyio/from_thread.py:263: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/starlette/testclient.py:714: in lifespan
+    await self.app(scope, self.stream_receive.receive, self.stream_send.send)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <starlette.testclient._WrapASGI2 object at 0x7f076fc6e950>, scope = {'type': 'lifespan', 'state': {}}
+receive = <bound method StapledObjectStream.receive of StapledObjectStream(send_stream=MemoryObjectSendStream(_state=_MemoryObje...d_channels=0, open_receive_channels=0, waiting_receivers=OrderedDict(), waiting_senders=OrderedDict()), _closed=True))>
+send = <bound method StapledObjectStream.send of StapledObjectStream(send_stream=MemoryObjectSendStream(_state=_MemoryObjectS...d_channels=0, open_receive_channels=0, waiting_receivers=OrderedDict(), waiting_senders=OrderedDict()), _closed=True))>
+
+    async def __call__(self, scope: Scope, receive: Receive, send: Send) -> None:
+>       instance = self.app(scope)
+                   ^^^^^^^^^^^^^^^
+E       TypeError: 'module' object is not callable
+
+.venv/lib/python3.13/site-packages/starlette/testclient.py:78: TypeError
+____________________________________________________ ERROR at setup of test_404_delete_users[-1] ____________________________________________________
+
+session = <sqlalchemy.orm.session.Session object at 0x7f076fcd05f0>
+
+    @pytest.fixture
+    def client(session):
+        def get_session_override():
+            return session
+    
+>       with TestClient(app) as client:
+             ^^^^^^^^^^^^^^^
+
+tests/conftest.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv/lib/python3.13/site-packages/starlette/testclient.py:698: in __enter__
+    portal.call(self.wait_startup)
+.venv/lib/python3.13/site-packages/anyio/from_thread.py:338: in call
+    return cast(T_Retval, self.start_task_soon(func, *args).result())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/concurrent/futures/_base.py:449: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/concurrent/futures/_base.py:401: in __get_result
+    raise self._exception
+.venv/lib/python3.13/site-packages/anyio/from_thread.py:263: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/starlette/testclient.py:727: in wait_startup
+    message = await receive()
+              ^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/starlette/testclient.py:724: in receive
+    self.task.result()
+/usr/lib/python3.13/concurrent/futures/_base.py:449: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/concurrent/futures/_base.py:401: in __get_result
+    raise self._exception
+.venv/lib/python3.13/site-packages/anyio/from_thread.py:263: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/starlette/testclient.py:714: in lifespan
+    await self.app(scope, self.stream_receive.receive, self.stream_send.send)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <starlette.testclient._WrapASGI2 object at 0x7f076fcd0230>, scope = {'type': 'lifespan', 'state': {}}
+receive = <bound method StapledObjectStream.receive of StapledObjectStream(send_stream=MemoryObjectSendStream(_state=_MemoryObje...d_channels=0, open_receive_channels=0, waiting_receivers=OrderedDict(), waiting_senders=OrderedDict()), _closed=True))>
+send = <bound method StapledObjectStream.send of StapledObjectStream(send_stream=MemoryObjectSendStream(_state=_MemoryObjectS...d_channels=0, open_receive_channels=0, waiting_receivers=OrderedDict(), waiting_senders=OrderedDict()), _closed=True))>
+
+    async def __call__(self, scope: Scope, receive: Receive, send: Send) -> None:
+>       instance = self.app(scope)
+                   ^^^^^^^^^^^^^^^
+E       TypeError: 'module' object is not callable
+
+.venv/lib/python3.13/site-packages/starlette/testclient.py:78: TypeError
+____________________________________________________ ERROR at setup of test_404_delete_users[2] _____________________________________________________
+
+session = <sqlalchemy.orm.session.Session object at 0x7f07706f9220>
+
+    @pytest.fixture
+    def client(session):
+        def get_session_override():
+            return session
+    
+>       with TestClient(app) as client:
+             ^^^^^^^^^^^^^^^
+
+tests/conftest.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv/lib/python3.13/site-packages/starlette/testclient.py:698: in __enter__
+    portal.call(self.wait_startup)
+.venv/lib/python3.13/site-packages/anyio/from_thread.py:338: in call
+    return cast(T_Retval, self.start_task_soon(func, *args).result())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/concurrent/futures/_base.py:449: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/concurrent/futures/_base.py:401: in __get_result
+    raise self._exception
+.venv/lib/python3.13/site-packages/anyio/from_thread.py:263: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/starlette/testclient.py:727: in wait_startup
+    message = await receive()
+              ^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/starlette/testclient.py:724: in receive
+    self.task.result()
+/usr/lib/python3.13/concurrent/futures/_base.py:449: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/concurrent/futures/_base.py:401: in __get_result
+    raise self._exception
+.venv/lib/python3.13/site-packages/anyio/from_thread.py:263: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/starlette/testclient.py:714: in lifespan
+    await self.app(scope, self.stream_receive.receive, self.stream_send.send)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <starlette.testclient._WrapASGI2 object at 0x7f07706fa6c0>, scope = {'type': 'lifespan', 'state': {}}
+receive = <bound method StapledObjectStream.receive of StapledObjectStream(send_stream=MemoryObjectSendStream(_state=_MemoryObje...d_channels=0, open_receive_channels=0, waiting_receivers=OrderedDict(), waiting_senders=OrderedDict()), _closed=True))>
+send = <bound method StapledObjectStream.send of StapledObjectStream(send_stream=MemoryObjectSendStream(_state=_MemoryObjectS...d_channels=0, open_receive_channels=0, waiting_receivers=OrderedDict(), waiting_senders=OrderedDict()), _closed=True))>
+
+    async def __call__(self, scope: Scope, receive: Receive, send: Send) -> None:
+>       instance = self.app(scope)
+                   ^^^^^^^^^^^^^^^
+E       TypeError: 'module' object is not callable
+
+.venv/lib/python3.13/site-packages/starlette/testclient.py:78: TypeError
+================================================================== tests coverage ===================================================================
+__________________________________________________ coverage: platform linux, python 3.13.5-final-0 __________________________________________________
+
+Name                        Stmts   Miss  Cover
+-----------------------------------------------
+src/fast_zero/__init__.py       0      0   100%
+src/fast_zero/app.py           45     24    47%
+src/fast_zero/database.py       7      2    71%
+src/fast_zero/models.py        13      0   100%
+src/fast_zero/schemas.py       15      0   100%
+src/fast_zero/settings.py       4      0   100%
+-----------------------------------------------
+TOTAL                          84     26    69%
+============================================================== short test summary info ==============================================================
+ERROR tests/test_app.py::test_read_rood_deve_retornar_OK_e_ola_mundo - TypeError: 'module' object is not callable
+ERROR tests/test_app.py::test_read_html_deve_retornar_OK_e_html - TypeError: 'module' object is not callable
+ERROR tests/test_app.py::test_create_user - TypeError: 'module' object is not callable
+ERROR tests/test_app.py::test_read_users - TypeError: 'module' object is not callable
+ERROR tests/test_app.py::test_update_users - TypeError: 'module' object is not callable
+ERROR tests/test_app.py::test_delete_user - TypeError: 'module' object is not callable
+ERROR tests/test_app.py::test_404_update_users[0] - TypeError: 'module' object is not callable
+ERROR tests/test_app.py::test_404_update_users[-1] - TypeError: 'module' object is not callable
+ERROR tests/test_app.py::test_404_update_users[2] - TypeError: 'module' object is not callable
+ERROR tests/test_app.py::test_404_delete_users[0] - TypeError: 'module' object is not callable
+ERROR tests/test_app.py::test_404_delete_users[-1] - TypeError: 'module' object is not callable
+ERROR tests/test_app.py::test_404_delete_users[2] - TypeError: 'module' object is not callable
+=========================================================== 1 passed, 12 errors in 2.85s ============================================================
+/home/paulogoes/Projetos/fast_zero/.venv/lib/python3.13/site-packages/_pytest/unraisableexception.py:33: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7f07706f98a0>
+  gc.collect()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/paulogoes/Projetos/fast_zero/.venv/lib/python3.13/site-packages/_pytest/unraisableexception.py:33: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7f076fcd24d0>
+  gc.collect()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/paulogoes/Projetos/fast_zero/.venv/lib/python3.13/site-packages/_pytest/unraisableexception.py:33: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7f076fc54c70>
+  gc.collect()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/paulogoes/Projetos/fast_zero/.venv/lib/python3.13/site-packages/_pytest/unraisableexception.py:33: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7f076fcd0400>
+  gc.collect()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/paulogoes/Projetos/fast_zero/.venv/lib/python3.13/site-packages/_pytest/unraisableexception.py:33: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7f07706fb6a0>
+  gc.collect()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+(fast-zero-py3.13) paulogoes@acerA315-53:~/Projetos/fast_zero$ 

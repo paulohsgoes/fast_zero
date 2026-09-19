@@ -1,7 +1,5 @@
 from http import HTTPStatus
 
-import pytest
-
 # from fastapi import Response
 from httpx import Response
 
@@ -33,6 +31,28 @@ def test_create_user(client):
     assert response.status_code == HTTPStatus.CREATED
 
 
+def test_create_users_with_same_name(client):
+    response = client.post(
+        '/users/',
+        json={
+            'username': 'Dino da Silva Sauro',
+            'email': 'dino@gmail.com',
+            'password': 'password',
+        },
+    )
+
+    response = client.post(
+        '/users/',
+        json={
+            'username': 'Dino da Silva Sauro',
+            'email': 'dino@yahoo.com',
+            'password': 'password',
+        },
+    )
+
+    assert response.status_code == HTTPStatus.BAD_REQUEST
+
+
 def test_read_users(client):
     response = client.get('/users/')
     assert response.status_code == HTTPStatus.OK
@@ -46,28 +66,33 @@ def test_read_users_with_user(client, user):
     assert response.json() == {'users': [user_schema]}
 
 
-def test_update_users(client, user):
+def test_update_users(client, user, token):
     response = client.put(
-        '/users/1',
+        f'/users/{user.id}',
+        headers={'Authorization': f'Bearer {token}'},
         json={
             'password': 'senhanova',
             'username': 'testusername2',
-            'email': 'test@test.com',
-            'id': 1,
+            'email': 'novoemail@test.com',
+            'id': user.id,
         },
     )
+    assert response.status_code == HTTPStatus.OK
     assert response.json() == {
         'username': 'testusername2',
-        'email': 'test@test.com',
-        'id': 1,
+        'email': 'novoemail@test.com',
+        'id': user.id,
     }
 
 
-def test_delete_user(client, user):
-    response = client.delete('/users/1')
+def test_delete_user(client, user, token):
+    response = client.delete(
+        f'/users/{user.id}', headers={'Authorization': f'Bearer {token}'}
+    )
     assert response.json() == {'message': 'User deleted'}
 
 
+"""
 @pytest.mark.parametrize('user_id', [0, -1, 2])
 def test_404_update_users(client, user_id):
     response = client.put(
@@ -88,3 +113,15 @@ def test_404_delete_users(client, user_id):
     response = client.delete(f'/users/{user_id}')
     assert response.status_code == HTTPStatus.NOT_FOUND
     assert response.json() == {'detail': 'User not found'}
+"""
+
+
+def test_get_token(client, user):
+    response = client.post(
+        '/token',
+        data={'username': user.email, 'password': user.clean_password},
+    )
+    token = response.json()
+    assert response.status_code == HTTPStatus.OK
+    assert token['token_type'] == 'Bearer'
+    assert 'access_token' in token

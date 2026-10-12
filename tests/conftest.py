@@ -1,4 +1,6 @@
 import pytest
+from factory.base import Factory
+from factory.declarations import LazyAttribute, Sequence
 from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
@@ -8,6 +10,15 @@ from fast_zero.app import app
 from fast_zero.database import get_session
 from fast_zero.models import User, table_registry
 from fast_zero.security import get_password_hash
+
+
+class UserFactory(Factory):
+    class Meta:
+        model = User
+
+    username = Sequence(lambda n: f'teste{n}')
+    email = LazyAttribute(lambda obj: f'{obj.username}@test.com')
+    password = LazyAttribute(lambda obj: f'{obj.username}@example.com')
 
 
 @pytest.fixture
@@ -40,11 +51,8 @@ def session():
 @pytest.fixture
 def user(session):
     pwd = 'testtest'
-    user = User(
-        username='Teste',
-        email='teste@sever.com',
-        password=get_password_hash(pwd),
-    )
+
+    user = UserFactory(password=get_password_hash(pwd))
     session.add(user)
     session.commit()
     session.refresh(user)
@@ -54,9 +62,18 @@ def user(session):
 
 
 @pytest.fixture
+def other_user(session):
+    user = UserFactory()
+    session.add(user)
+    session.commit()
+    session.refresh(user)
+    return user
+
+
+@pytest.fixture
 def token(client, user):
     response = client.post(
-        '/token',
+        '/auth/token',
         data={'username': user.email, 'password': user.clean_password},
     )
     return response.json()['access_token']

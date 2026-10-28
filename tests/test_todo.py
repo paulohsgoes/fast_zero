@@ -19,6 +19,8 @@ def test_create_todo(client, token):
         'title': 'Test todo',
         'description': 'Test todo description',
         'state': 'draft',
+        'created_at': response.json().get('created_at'),
+        'updated_at': response.json().get('updated_at'),
     }
 
 
@@ -154,8 +156,7 @@ def test_delete_todo(session, client, user, token):
 
 def test_delete_todo_error(client, token):
     response = client.delete(
-        f'/todos/{10}',
-        headers={'Authorization': f'Bearer {token}'}
+        f'/todos/{10}', headers={'Authorization': f'Bearer {token}'}
     )
 
     assert response.status_code == HTTPStatus.NOT_FOUND

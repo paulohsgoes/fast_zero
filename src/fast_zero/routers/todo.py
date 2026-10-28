@@ -80,8 +80,11 @@ def delete_todo(todo_id: int, session: Session, user: CurrentUser):
 
     return {'message': 'Task has been deleted successfully.'}
 
-@router.patch('/{todo_id'}, response_model=TodoPublic)
-def patch_todo(todo_id: int, session: Session, user: CurrentUser, todo: TodoUpdate):
+
+@router.patch('/{todo_id}', response_model=TodoPublic)
+def patch_todo(
+    todo_id: int, session: Session, user: CurrentUser, todo: TodoUpdate
+):
     db_todo = session.scalar(
         select(Todo).where(Todo.user_id == user.id, Todo.id == todo_id)
     )

@@ -22,7 +22,9 @@ jobs:
           python-version: '3.13'
 
       - name: Instalar o poetry
-        run: pipx install poetry
+        run: |
+          pipx install poetry
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
 
       - name: Instalar dependencias
         run: poetry install
